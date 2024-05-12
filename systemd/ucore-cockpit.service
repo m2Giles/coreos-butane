@@ -1,0 +1,14 @@
+[Unit]
+Description=Setup Cockpit
+ConditionPathExists=!/etc/ucore/%N.stamp
+ConditionPathExists=/etc/ucore/ucore-autorebase.stamp
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl enable cockpit.service
+ExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp
+
+[Install]
+WantedBy=default.target

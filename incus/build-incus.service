@@ -1,0 +1,8 @@
+[Unit]
+Description=Build incus container
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/bin/podman pull ghcr.io/ublue-os/ubuntu-toolbox:latest
+ExecStart=/usr/bin/podman build -f /etc/containers/build/Containerfile.incus -t incus

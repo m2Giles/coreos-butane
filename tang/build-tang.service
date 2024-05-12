@@ -1,0 +1,9 @@
+[Unit]
+Description=Build tang container
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/bin/podman pull quay.io/centos/centos:stream9-minimal
+ExecStart=/usr/bin/podman build -f /etc/containers/build/Containerfile.tang -t tang

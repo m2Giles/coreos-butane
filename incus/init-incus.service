@@ -1,0 +1,12 @@
+[Unit]
+Description=Initialize Incus
+ConditionPathExists=!/etc/ucore/%N.stamp
+ConditionPathExists=/etc/ucore/build-incus-firstboot.stamp
+Wants=network-online.target incus.service
+After=network-online.target incus.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c "cat /home/core/incus-preseed.yml | incus admin init --preseed"
+ExecStart=/usr/local/bin/incus-network-setup incusbr0
+ExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp

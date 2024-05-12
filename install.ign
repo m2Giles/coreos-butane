@@ -1,0 +1,298 @@
+{
+  "ignition": {
+    "version": "3.4.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "core",
+        "sshAuthorizedKeys": [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO5j7VvlXfVzGR19cDsh/gUwK5BK7GYButIXwiHjHOpO"
+        ]
+      }
+    ]
+  },
+  "storage": {
+    "directories": [
+      {
+        "path": "/etc/ucore"
+      },
+      {
+        "path": "/var/lib/incus",
+        "mode": 488
+      }
+    ],
+    "files": [
+      {
+        "path": "/var/lib/systemd/linger/core",
+        "mode": 493
+      },
+      {
+        "path": "/var/usrlocal/bin/incus",
+        "contents": {
+          "source": "https://github.com/lxc/incus/releases/latest/download/bin.linux.incus.x86_64"
+        },
+        "mode": 493
+      },
+      {
+        "path": "/var/usrlocal/bin/incus-agent",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/3SR62rbQBCF/+9TnMjGTcArJaU3tzgUSgOFFkpooRCCWUsja6l2VuwltZvk3YsuNMKO/wjEzH7zHc7kJFtrznwlvl9/vvrya5lkLnKmOY9+pTbEIRFigq+0UfkOleKi1rwRusQNTiAJyfS+f/mY4BazGW4gC/SUelsMDNx+QKiIBQDUDOkPV0YkUWohzO9CO8hmNMhSMwhdRc6DtuxTYWzksFo0p2e47/jGFo2za8KiYQqrO+2CtrjMCrrLONY1Xl7OLvDwgOAiDS8iB8iARYPO5uAmpIWzc5Xn5P3yfB6cYr/s0XOv/9Ly4vzVu9dv3+zfEY+t7rfuQKhowPtKOXpSb2VKpWskn2ysC34RBqVFM+8Gmjdpl/tHe7ckN2KtNSu3S4UzkOVYvCtRDiXmDaTajzVeSWvNcZtOTyMrQ5DmLDkOq+wfhrM2vG8/R/fEBD/Z/M8eyDTWKbfr06Ui9rODgp1pq3+u92uStKX8KX4quv8jBkimH5N/AQAA//+Pxuu75AIAAA=="
+        },
+        "mode": 493
+      },
+      {
+        "path": "/var/usrlocal/bin/incus-agent-setup",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/5RUYWvrNhT9rl9xnzP6tlHZ7tjbWzbyYOSlMGjolrYwGCMo8k2sVZaEJKfx2vz3IckNTtaVPn8Qtnx17zn3nKvRu2IlVOFq4tADxZb8tphd/vrHJCtsqwqheOuWbIPKZ2T6eXE9n2RFhduiEu6+WHVUVIXjTtDy99n8bhmX6We6uJ4vj46SEVy2inuhlctJo1vll7yyuvn6G3gkAABxD7KvHmOVfRZeE5R93iifwadYV7VSwnefzi7InvR5xmaQpDJWrxDGRqFfboX1Qp+ehKcn8LbFQVnqYWyAa7UWm/8UphoY5+jcpDz3lik3SXnPnfgHJxfl9z9++PjDS/DWTMgDtBFMa+T3INbwgMCkRVZ1ULMtAlMQ2wRCgZGMY96fuK2FgwchJfjOCM6k7GCFETxUrRVqAxadZzYe9TUCZw5Br4FB7C5dMYcVOPStSUnFGv4EuhuQTBrTJBT89XPIo2JseJDXOgRf7M/BIm1dKIo74Xx46dU9BO+EhzJ+rgV5pi2RqdYAUxWEjiQcbd94OUCSvaoU/o38yCCvBdumEvbtqQckA0ShNlmCHxlFMUdwazvYoE/EnyWrrNhiTpr7UI+aU/McLBrqDWwfPkMlyKa6lZV673snjg1om8SLU3MTpIvSpv+e2Q36nHxZ/16A10ML1veNWbt+HWajOgwUTsqPZZnM/qGcB1BTbbqIqWKe5YQboAt2Qr3Ivj2qRkZwp3oONYLHxmjLbJd4HQid9u9UyLRLRjCLdoiejw0VKplf+PcOjEWHIeubTRMuKLGD1oBB2wjn0k3Fa/2ggC7Aau1/CsspqSvcMN7lJA7WO6D4/6MFZ2dh+I4i5K56afSkAurg8HNYdJiUhDEbwS8+tNOD1/E+0BbhZnYlVLsDyVYoXU76fa4jm7d4hqRp/jcAAP//dJnU6yEGAAA="
+        },
+        "mode": 493
+      },
+      {
+        "path": "/var/usrlocal/bin/incus-network-setup",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/5RTTW/bMAy961dwWQ4bMMVI0dNWH9LFBXJYOjQddghyUCQ6FupQhkjno+iPH2ynaTKsK3oSKLz39B5JffyQ1ByTpadkabhQajK9z+5uRt+ztD9U49sfo8k07V8o5XOYg36EXr+77MHiG0iBpAAADkBPtmaV+1P4UfCcgbYI0JsG8CQYc2MRuELrc4/uC+DOi6fVYDDodeidFxi2yqPx+C6bzdL+J+dZYliGHWCjAVrHEARaE6A1cO3CoSKUbYgPwEXYQq8/7METrCJW4KvN5cA4F5EZnsDWAtrBV9A5XLzUSVMPP5/GOth4LVS1uYRn2YhSR3ojVmtWECFBsQnvWXDtDmfShtCOWJ/2c8AYN94iXF1Bdnuj5r/Iy0KNkW30lfhA6aRNX2HUpacHGE9nYAPlflVH0wAgDxFeJEFde3J8H1Les+Z62b2vCUU7bN5i/YIedFdqlAvGdzHUfNZZX6j7fYVpIOQiiMp2aGdioqTHrYzIodyglRIc8anX5xG8xQpr4+mM2G3rgReqn4H/TY24wShn/bnDRq1NnO28pHtkpeYTYjFluVC/DQm66/27utHMrpv/0UTuI25NWWq7dqD1YyBMJdYs2JS2MLRCffw56dkv07rCuDaEJH+pdm7aphhcB9IRy2DcqygksywRtKawhf/voPoTAAD//3Za2KlJBAAA"
+        },
+        "mode": 493
+      },
+      {
+        "path": "/etc/udev/rules.d/99-incus-agent.rules",
+        "contents": {
+          "compression": "",
+          "source": "data:,SYMLINK%3D%3D%22virtio-ports%2Forg.linuxcontainers.incus%22%2C%20TAG%2B%3D%22systemd%22%2C%20ENV%7BSYSTEMD_WANTS%7D%2B%3D%22incus-agent.service%22"
+        }
+      },
+      {
+        "path": "/home/core/incus-preseed.yml",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/3yQQU4DMQxF9zmF1U1XlEoUhLxkwyGqqgqJpzUNcRR7iiji7mhoA4MGkVX8k//s7yC54x06AIAglRZ7s6JbH2MlVYT5GnGD96vVzdxlslepB0V3BWMfl+Nq8e3wvUmT7yZyJA2Vi7FkhNnMAWT/QgicQ69PdekA7K3Q5a1UeaZgCJE63ydzalL9jrZFJE3mUD4Rwu0jP/zTqJEAYuUjVYRTp65U6TjRGAnvH39iIh05DD+HlmT75fnW+IPShPO+foUbzjlg5vBVVxFriOJtj3DdKpE0HvjHG1kPk0SXZSnCeuNC6tWGdLlP6TMAAP//NdXO2uUBAAA="
+        }
+      },
+      {
+        "path": "/etc/containers/systemd/incus.container",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/3xVwW7jOAy96yuEAIs5OW6P64UOnZnstkCnUzST3UNRFLLFONrKopek0uTvF3LaJE6DXgTzkaIfKT7pcRG9PKnvwA35XjxGcxObxPobRrE+AunORtuC0/VW/5esCyDqHxuFTQR5RXopMAYfYSqWWhDto5fC5xxTBlr7BtRXWCKBOeO5WgrQ+UTqG0bnM6N7K6vZxrOwKUGaMjVIUNbJB7dLVyw9sdSIMmWxXa/U457+k7pKgoveWQFD0HoW2qprZLmzXeaU6fwW1H7DAVb36Dobr6hlUxQ9+bUP0IJTc2gSedne2hrCd8+2DmCEEox38FtYgb1o2/eWOiSTYoNx6SM4de8d3/rOiyku1YKBDCFKlZdxJt83eoUs6m7XKTMYw+/N7njIuFwZ1rh5w/f2NEVeWYLnljD1bC7VLK49YewgipnMr2e3t6a2vJqMHdc/f8xMubZUrrCDMjf9JGIxnz2YM3jz3kvDyaHuh1JOYn7NHn7c3P358/n7zcPclImpHFiWAtT5uMSqpBTLXOgZ50T9jSF1YMpDWEUc7Br2Hun6alhO8Jyt9rHcN6jIg1ntcYhC2x59zCfxyS7Y9EhH+z54Pt2dGRewgab61HmUY3QS1Yl5UqODdTUsJzhvuRqWj/FlLzyyYwqhevN0m+MU5ZJLhuBj2ozYBWzLfzFRtGGPZ8Hmcrg6+jyqKoMEjGE9zbqoPgCE6ipGFDtcTpTiFBs/fQHon5F866MNh8lehEFOgzzGWtyyQOeMDa92y2PWvi4HvVdjcx+UkQ5dCsDVyDgq49CwPI7TiL1lfnXnQ6Z7gTBI6h1GyIEjwocp1GcmU8020JiiWAPVyKCLItoO9GQQoy6KxEB6cnlxcZGtoT0HM0+NnpwoWxeDDPTkMn/GtXfe6skQ3xMMvmKF+MJ6ojNo3e5ytqHobfNiW3j36C+V/kNnBh06Xdi/9O6Stq7zUeeffVE3nW3BBGxsGBS+63+wAixKPc53z8OTegAWS/J+bL98B5hknrE5NOb3iwulHm8iiw3haXiWwH3dGgdLm4K8vyT/BwAA//8X7moo5QYAAA=="
+        }
+      },
+      {
+        "path": "/etc/containers/systemd/users/internal.network",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BNetwork%5D%0A"
+        }
+      },
+      {
+        "path": "/etc/containers/systemd/internal.network",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BNetwork%5D%0A"
+        }
+      },
+      {
+        "path": "/etc/systemd/resolved.conf.d/stub-listener.conf",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BResolve%5D%0ADNSStubListener%3Dno%0A"
+        }
+      },
+      {
+        "path": "/etc/containers/systemd/nginx/nginx-data.volume",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BVolume%5D"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/containers/systemd/nginx/nginx-letsencrypt.volume",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BVolume%5D"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/containers/systemd/nginx/nginx.container",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/3SRwa7aMBBF9/MV/ACJAwGllrygRUIsQKiUdhFlMU2G1MWxI3sChK+vArQqT+8t5/hIPtLND1ZzAUsKpdcta2fVttb2Otp5d+1HG7RYk4cfaDkoS3xx/jR21mhLEaOviWFxZPIfvEH+xVlGbckXsOjYHdoKmZSnWgf2PawbrElVrjyRj7SLf5eTJLZDwbgdCsbNo0AaZAoMu+6n0eHXznlWmZCZeCWJzJIXkqZTmaZT2D7ylLZM3qKJnr3w3ZmuIfX4skLG6HwnMh4OeXsVDHEgW/q+5X8ecRn/x+UNDuvlBlslZCKEkMnfO5GzSTrJMjmfzaZzWL2xVu9akO/Jn3VJBXylwOhZoblgH+Cbbsh1vB/Ynkr1SQiAfG0DozHFfTKqPveqoiN2hp+T/AkAAP//Bfo3pPEBAAA="
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/containers/systemd/pihole/pihole-dnsmasq.volume",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BVolume%5D%0A"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/containers/systemd/pihole/pihole.container",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/3ySUW/aMBSF3++v4A/UOLB0zJIfWNN1PDRCS9keEJpMfKFXdezMvqFLf/1EAE1M2+QH65zzyTrXuuuVJ95AgamO1DIFr5f0HByOdiGOzGiLzBhHRVmN8GeLkdDXCN+M56Q98muILzfBO/Io2MQ9Msx3jPEfGazvgmdDHuMG5tbemdZsyRH3urx/+j4vHhclzDsOq9YaRh1xT4ljD59D4tI0qFsSx3ZQlJXOJu+FFFJkJyWGA8tu6yg9L0Pk34TKpyqfjrlu/5t39jrPpzOpZhLK0zSaPGP0xonzePA1uG5odSwlDoNSY+R6fLLU2zVyY31qTPpxhV48q97g3h8oBt+g50/kUA9Affm0NE59Ymzs+fnzJdAfYNGYPWob6heMgsI1oZxhTAyrRfFoWi1VJqVU2UVnKp+8m8xm6jbPp7fw8Af18FcK1hXGA9W4gS+Y2ETWxr2aPsETNRg6ro5ehbX+ICXAeuETG+c2w/ag/dhrizvTOb5sx68AAAD//4Kr7KqMAgAA"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/containers/systemd/pihole/pihole.env",
+        "contents": {
+          "compression": "",
+          "source": "data:,TZ%3DAmerica%2FNew_York%0AWEBPASSWORD%3Dpassword%0APIHOLE_DNS_%3D1.1.1.1%3B1.0.0.1%3B192.168.1.1%3B10.52.161.1%0ADNSMASQ_LISTENING%3Dall%0A"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/containers/systemd/pihole/pihole.volume",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BVolume%5D%0A"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/containers/systemd/tang/tang-keys.volume",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BVolume%5D"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/containers/systemd/tang/tang.container",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/3SQT2/iMBDF7/MpctljEsMuKBvJB/6sWA6L0ALtIcphkgzBwrEjewJNP31Fml6q9ub33k/PmpedjOIc1uRLp1pW1sgjmjoIgx3x3bprsERPVbCm0vVDDitrKvV47ZEvf16UZy9j4jLuSusoLjqlq/DHLjwr57mwliPP2LTwjIa9NO+1oTVaGYoYXU0MizOT+yaDbGUNozLkclh0bE9thUzSUa08ux62DdYktS1RX6znmNHU8Nd63mFDclDjMVIZJmdQR+NX8GR1N0LhlXof3QYjjW/o4qoYutJX2HeFVv6yt45lIhKRJgJO2/U/bKVIJ0KIdPKhJ+ls+muaJOl8Nvs5h80navMlBdmB3E2VlMN/8oyOJeo79h6OqiHb8eHhHaiUv4UAyLbGM2qdD6NStexlRWfsNI+jvQUAAP//n2J4kNcBAAA="
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/containers/build/Containerfile.incus",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/4xSX2sUMRB/308xHKXoQzbgo6Ag7QmCdwdX9KUtkmRn94bNJktmUm4rfndpdletqPg2mZnfH+aX98fDDrqTSzVFna3PqCLrbHOQrCRGb+O5qo6f9mBGUR0K5LExgnB5CXfV2qPAYrwHNcFdBQDgjHKYhFpyRpDXbk5+KXliwaGZaYa+oQRqBI3itBlF9zglCh3reaEAVcs3H+EkMvJrrce+4/rRWOun2sXhCVEbdqDiH1iWvad54UN3irBp0MItUxewUXZ68y/Y/V91KbjMmsVYj3Dxop7VI6uEHg2XQxW5i6+ft8ebD4f9l6vD9Xb/brf99hIGQ2EDb39a5piTQ649sdTN4kAVETWLlNHz8/9XJFZSy2pMsVvjKKy/1iqTcibEQM6sQdGYYhZ89eNZTKywfojNUvqHYV16bDkLeVaeQj4/9+U8mvB77A8maU9W+7NreR7OH8SJBwzltsVhzdH1KFV1tbuG241mS0FTINncfw8AAP//Nb8IjsoCAAA="
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/containers/build/Containerfile.tang",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/4yQQYvbMBCF7/oVgyi52eqxLbjQJi4EYjvYSWhJclCkcStij1xJSXFL/3ux603CsofVZRh9895j5ktZZPDzIvvYWKGQgvVT+eCDQ9m+j1pDppUNY2m+g2qbZZ/KbwnfSPoOFborOg4HBgCwSKv5cr1ZFnnC55aCNITO/EYND8NQWwc5hl/WneGz9Khhgcr1XTCWnpzWRblJ3r1lrNzm0BrlrKYaLp2WASHqYTabBm/MkA+yaQb4nwwvDLH31lslwwta1aAkmNQ37FqIXA3iKp1QUv1A0V/aB/VZGwdRBwKDEr73AVs9VTEE69hbdcYQa3FXdc5QqIHvq5EdD7QyPiBV462TZ+2bP8Mh/h6Iw8fX5NgrOmc0xspSzVj6dV1UKfDJhrNdsdpmKeyBj1vp02jA4cjYPFuM//5kSBgygcPxXwAAAP//LX+uthwCAAA="
+        },
+        "mode": 420
+      }
+    ]
+  },
+  "systemd": {
+    "units": [
+      {
+        "dropins": [
+          {
+            "contents": "[Service]\nTTYVTDisallocate=no\nExecStart=\nExecStart=-/usr/sbin/agetty --autologin core --noclear %I $TERM\n",
+            "name": "autologin.conf"
+          }
+        ],
+        "name": "serial-getty@ttyS0.service"
+      },
+      {
+        "dropins": [
+          {
+            "contents": "[Service]\nExecStart=\nExecStart=-/usr/sbin/agetty --autologin core -o '-p -f core' --noclear %I $TERM\n",
+            "name": "autologin.conf"
+          }
+        ],
+        "name": "getty@tty1.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=uCore autorebase to OCI unsigned image and reboot\nConditionPathExists=!/etc/ucore/%N.stamp\nAfter=network-online.target\nWants=network-online.target\n\n[Service]\nType=oneshot\nStandardOutput=journal+console\nRemainAfterExit=yes\nExecStartPre=/usr/bin/echo \"Rebasing to uCore OCI unsigned image\"\nExecStartPre=/usr/bin/sleep 5\nExecStart=/usr/bin/rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/ucore-hci:stable-zfs\nExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp\nExecStartPost=/usr/bin/systemctl reboot\n\n[Install]\nWantedBy=multi-user.target",
+        "enabled": true,
+        "name": "ucore-autorebase.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=uCore autorebase to OCI signed image and reboot\nConditionPathExists=!/etc/ucore/%N.stamp\nConditionPathExists=/etc/ucore/ucore-autorebase.stamp\nAfter=network-online.target\nWants=network-online.target\n\n[Service]\nType=oneshot\nStandardOutput=journal+console\nRemainAfterExit=yes\nExecStartPre=/usr/bin/echo \"Rebasing to uCore OCI signed image\"\nExecStartPre=/usr/bin/sleep 5\nExecStart=/usr/bin/rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/ucore-hci:stable-zfs\nExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp\nExecStartPost=/usr/bin/systemctl reboot\n\n[Install]\nWantedBy=multi-user.target",
+        "enabled": true,
+        "name": "ucore-autorebase-signed.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=uCore enrolling MOK and reboot\nConditionPathExists=/etc/pki/akmods/certs/akmods-ublue.der\nConditionPathExists=!/etc/ucore/%N.stamp\n\n[Service]\nType=oneshot\nStandardOutput=journal+console\nRemainAfterExit=yes\nExecStartPre=/usr/bin/echo \"Enrolling uCore MOK, password is ublue-os\"\nExecStart=/usr/bin/bash -c \"printf 'ublue-os\\nublue-os\\n' | mokutil --import /etc/pki/akmods/certs/akmods-ublue.der\"\nExecStart=/usr/sbin/modprobe zfs\nExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp\n\n[Install]\nWantedBy=multi-user.target",
+        "enabled": true,
+        "name": "ucore-enroll-mok.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Setup Cockpit\nConditionPathExists=!/etc/ucore/%N.stamp\nConditionPathExists=/etc/ucore/ucore-autorebase.stamp\nWants=network-online.target\nAfter=network-online.target\n\n[Service]\nType=oneshot\nExecStart=/usr/bin/systemctl enable cockpit.service\nExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp\n\n[Install]\nWantedBy=default.target",
+        "enabled": true,
+        "name": "ucore-cockpit.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Setup Firewalld Port Forwards\nConditionFileIsExecutable=/usr/bin/firewall-cmd\nConditionPathExists=!/etc/ucore/%N.stamp\nAfter=network-online.target firewalld.service\n\n[Service]\nType=oneshot\nExecStart=/usr/bin/firewall-cmd --add-port=53/tcp --permanent\nExecStart=/usr/bin/firewall-cmd --add-port=53/udp --permanent\nExecStart=/usr/bin/firewall-cmd --add-port=80/tcp --permanent\nExecStart=/usr/bin/firewall-cmd --add-port=81/tcp --permanent\nExecStart=/usr/bin/firewall-cmd --add-port=443/tcp --permanent\nExecStart=/usr/bin/firewall-cmd --add-port=5380/tcp --permanent\nExecStart=/usr/bin/firewall-cmd --add-port=8080/tcp --permanent\nExecStart=/usr/bin/firewall-cmd --add-port=8443/tcp --permanent\nExecStart=/usr/bin/firewall-cmd --reload\nExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp\n\n[Install]\nWantedBy=multi-user.target",
+        "enabled": true,
+        "name": "ucore-firewalld-setup.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Build tang container\nWants=network-online.target\nAfter=network-online.target\n\n[Service]\nType=oneshot\nExecStartPre=/usr/bin/podman pull quay.io/centos/centos:stream9-minimal\nExecStart=/usr/bin/podman build -f /etc/containers/build/Containerfile.tang -t tang",
+        "name": "build-tang.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Build Tang Container\n\n[Timer]\nOnCalendar=weekly\nRandomizedDelaySec=900\nPersistent=true\n\n[Install]\nWantedBy=timers.target",
+        "enabled": true,
+        "name": "build-tang.timer"
+      },
+      {
+        "contents": "[Unit]\nDescription=Build Tang Container following first Boot\nConditionPathExists=!/etc/ucore/%N.stamp\nWants=network-online.target\nAfter=network-online.target\n\n[Service]\nType=oneshot\nExecStart=/usr/bin/systemctl start build-tang.service\nExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp\nExecStartPost=/usr/bin/systemctl start tang.service\n\n[Install]\nWantedBy=multi-user.target",
+        "enabled": true,
+        "name": "build-tang-firstboot.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Build incus container\nAfter=network-online.target\n\n[Service]\nType=oneshot\nExecStartPre=/usr/bin/podman pull ghcr.io/ublue-os/ubuntu-toolbox:latest\nExecStart=/usr/bin/podman build -f /etc/containers/build/Containerfile.incus -t incus",
+        "name": "build-incus.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Build Incus Container weekly\n\n[Timer]\nOnCalendar=weekly\nRandomizedDelaySec=900\nPersistent=true\n\n[Install]\nWantedBy=timers.target",
+        "enabled": true,
+        "name": "build-incus.timer"
+      },
+      {
+        "contents": "[Unit]\nDescription=Build incus container after first Boot\nConditionPathExists=!/etc/ucore/%N.stamp\nConditionPathExists=/etc/ucore/ucore-enroll-mok.stamp\nWants=network-online.target\nAfter=network-online.target\n\n[Service]\nType=oneshot\nExecStart=/usr/bin/systemctl start build-incus.service\nExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp\nExecStartPost=/usr/bin/systemctl start incus.service\nExecStartPost=/usr/bin/sleep 5\nExecStartPost=/usr/bin/systemctl start init-incus.service\n\n[Install]\nWantedBy=multi-user.target",
+        "enabled": true,
+        "name": "build-incus-firstboot.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Incus - agent\nDocumentation=https://linuxcontainers.org/incus/docs/main/\nBefore=multi-user.target cloud-init.target cloud-init.service cloud-init-local.service\nDefaultDependencies=no\n\n[Service]\nType=notify\nWorkingDirectory=-/run/incus_agent\nExecStartPre=/usr/local/bin/incus-agent-setup\nExecStart=/run/incus_agent/incus-agent\nRestart=on-failure\nRestartSec=5s\nStartLimitIntervalSec=60\nStartLimitBurst=10",
+        "name": "incus-agent.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Set correct file context for incus-agent\nConditionPathExists=!/etc/ucore/%N.stamp\nConditionFileIsExecutable=/usr/sbin/semanage\nBefore=incus-agent.service\n\n[Service]\nType=oneshot\nExecStart=/usr/sbin/semanage fcontext -a -t bin_t /var/run/incus_agent/incus-agent\nExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp\n\n[Install]\nWantedBy=multi-user.target",
+        "enabled": true,
+        "name": "incus-agent-selinux.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Install incus bash completions\n\n[Service]\nType=oneshot\nExecStart=/usr/bin/bash -c \"/usr/bin/incus completion bash \u003e /etc/bash_completion.d/incus\"\n\n[Install]\nWantedBy=default.target",
+        "enabled": true,
+        "name": "incus-completions.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Initialize Incus\nConditionPathExists=!/etc/ucore/%N.stamp\nConditionPathExists=/etc/ucore/build-incus-firstboot.stamp\nWants=network-online.target incus.service\nAfter=network-online.target incus.service\n\n[Service]\nType=oneshot\nEnvironment=HOME=/var/home/core\nEnvironment=USER=core\nExecStart=/usr/bin/distrobox enter incus -- sudo incus ls\nExecStart=/usr/bin/distrobox enter incus -- sh -c \"cat /home/core/incus-preseed.yml | incus admin init --preseed\"\nExecStart=/usr/local/bin/incus-network-setup incusbr0\nExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp",
+        "name": "init-incus.service"
+      },
+      {
+        "enabled": true,
+        "name": "podman.socket"
+      },
+      {
+        "enabled": true,
+        "name": "podman-auto-update.timer"
+      },
+      {
+        "enabled": true,
+        "name": "netavark-firewalld-reload.service"
+      }
+    ]
+  }
+}

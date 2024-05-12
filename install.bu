@@ -1,0 +1,152 @@
+variant: fcos
+version: 1.5.0
+passwd:
+  users:
+    - name: core
+      ssh_authorized_keys:
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO5j7VvlXfVzGR19cDsh/gUwK5BK7GYButIXwiHjHOpO
+  groups:
+    - name: incus-admin
+      gid: 950
+      system: true
+    - name: incus
+      gid: 951
+      system: true
+
+storage:
+  directories:
+    # Stamp directory
+    - path: /etc/ucore
+
+    # Volume for incus
+    - path: /var/lib/incus
+      mode: 0750
+
+  files:
+    # Enable lingering for core
+    - path: /var/lib/systemd/linger/core
+      mode: 0755
+    
+    # Incus Stuff
+    - path: /var/usrlocal/bin/incus
+      contents:
+        source: https://github.com/lxc/incus/releases/latest/download/bin.linux.incus.x86_64
+      mode: 0755
+    - path: /var/usrlocal/bin/incus-agent
+      mode: 0755
+    - path: /var/usrlocal/bin/incus-agent-setup
+      mode: 0755
+    - path: /var/usrlocal/bin/incus-network-setup
+      mode: 0755
+    - path: /etc/udev/rules.d/99-incus-agent.rules
+      contents:
+        local: incus/incus-agent.rules
+    - path: /home/core/incus-preseed.yml
+      contents:
+        local: incus/incus-preseed.yml
+    - path: /etc/containers/systemd/incus.container
+      contents:
+        local: incus/incus.container
+    
+    # Make Internal Networks for Podman
+    - path: /etc/containers/systemd/users/internal.network
+      contents:
+        inline: |
+          [Network]
+    - path: /etc/containers/systemd/internal.network
+      contents:
+        inline: |
+          [Network]
+    
+    # Turn off Stub Listener for systemd-resolved
+    - path: /etc/systemd/resolved.conf.d/stub-listener.conf
+      contents:
+        inline: |
+          [Resolve]
+          DNSStubListener=no
+
+  trees:
+    - local: nginx
+      path: /etc/containers/systemd/nginx
+    - local: pihole
+      path: /etc/containers/systemd/pihole
+    - local: tang/container
+      path: /etc/containers/systemd/tang
+    - local: Containerfiles
+      path: /etc/containers/build
+    - local: executables
+      path: /var/usrlocal/bin
+
+systemd:
+  units:
+    # Autologin on Console
+    - name: serial-getty@ttyS0.service
+      dropins:
+        - name: autologin.conf
+          contents: |
+            [Service]
+            TTYVTDisallocate=no
+            ExecStart=
+            ExecStart=-/usr/sbin/agetty --autologin core --noclear %I $TERM
+    - name: getty@tty1.service
+      dropins:
+        - name: autologin.conf
+          contents: |
+            [Service]
+            ExecStart=
+            ExecStart=-/usr/sbin/agetty --autologin core -o '-p -f core' --noclear %I $TERM
+    
+    # Ucore initial setup
+    - name: ucore-autorebase.service
+      contents_local: systemd/ucore-autorebase.service 
+      enabled: true
+    - name: ucore-autorebase-signed.service
+      contents_local: systemd/ucore-autorebase-signed.service 
+      enabled: true
+    - name: ucore-enroll-mok.service
+      contents_local: systemd/ucore-enroll-mok.service
+      enabled: true
+    - name: ucore-cockpit.service
+      contents_local: systemd/ucore-cockpit.service
+      enabled: true
+    - name: ucore-firewalld-setup.service
+      contents_local: systemd/ucore-firewalld-setup.service
+      enabled: true
+
+    # Tang Services
+    - name: build-tang.service 
+      contents_local: tang/build-tang.service
+    - name: build-tang.timer
+      contents_local: tang/build-tang.timer
+      enabled: true
+    - name: build-tang-firstboot.service
+      contents_local: tang/build-tang-firstboot.service
+      enabled: true
+    
+    # Incus Services
+    - name: build-incus.service
+      contents_local: incus/build-incus.service
+    - name: build-incus.timer
+      contents_local: incus/build-incus.timer
+      enabled: true
+    - name: build-incus-firstboot.service
+      contents_local: incus/build-incus-firstboot.service
+      enabled: true
+    - name: incus-agent.service
+      contents_local: incus/incus-agent.service
+    - name: incus-agent-selinux.service
+      contents_local: incus/incus-agent-selinux.service
+      enabled: true
+    - name: incus-completions.service
+      contents_local: incus/incus-completions.service
+      enabled: true
+    - name: init-incus.service
+      contents_local: incus/init-incus.service
+    
+    # Podman Services
+    - name: podman.socket
+      enabled: true
+    - name: podman-auto-update.timer
+      enabled: true
+    - name: netavark-firewalld-reload.service
+      enabled: true

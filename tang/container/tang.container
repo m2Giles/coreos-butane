@@ -1,0 +1,24 @@
+[Unit]
+Description=Tang - Network Based Decryption
+ConditionPathExists=/etc/ucore/build-%N-firstboot.stamp
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+AutoUpdate=registry
+Image=localhost/tang
+HostName=tang
+Network=internal.network
+Volume=tang-keys.volume:/var/db/tang:z
+PublishPort=8080:80
+UIDMap=0:1000:1
+UIDMap=1:524288:65536
+GIDMap=0:1000:1
+GIDMap=1:524288:65536
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target

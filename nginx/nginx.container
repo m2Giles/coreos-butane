@@ -1,0 +1,25 @@
+[Unit]
+Description=Nginx Proxy Manager
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+AutoUpdate=registry
+Image=docker.io/jc21/nginx-proxy-manager:latest
+PublishPort=80:80
+PublishPort=81:81
+PublishPort=443:443
+Network=internal.network
+Volume=nginx-data.volume:/data:z
+Volume=nginx-letsencrypt.volume:/etc/letsencrypt:z
+UIDMap=0:1000:1
+UIDMap=1:524288:65536
+GIDMap=0:1000:1
+GIDMap=1:524288:65536
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target

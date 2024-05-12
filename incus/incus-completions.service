@@ -1,0 +1,9 @@
+[Unit]
+Description=Install incus bash completions
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c "/usr/bin/incus completion bash > /etc/bash_completion.d/incus"
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=uCore enrolling MOK and reboot
+ConditionPathExists=/etc/pki/akmods/certs/akmods-ublue.der
+ConditionPathExists=!/etc/ucore/%N.stamp
+
+[Service]
+Type=oneshot
+StandardOutput=journal+console
+RemainAfterExit=yes
+ExecStartPre=/usr/bin/echo "Enrolling uCore MOK, password is ublue-os"
+ExecStart=/usr/bin/bash -c "printf 'ublue-os\nublue-os\n' | mokutil --import /etc/pki/akmods/certs/akmods-ublue.der"
+ExecStart=/usr/sbin/modprobe zfs
+ExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp
+
+[Install]
+WantedBy=multi-user.target

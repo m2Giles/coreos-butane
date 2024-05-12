@@ -1,0 +1,18 @@
+[Unit]
+Description=uCore autorebase to OCI unsigned image and reboot
+ConditionPathExists=!/etc/ucore/%N.stamp
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+StandardOutput=journal+console
+RemainAfterExit=yes
+ExecStartPre=/usr/bin/echo "Rebasing to uCore OCI unsigned image"
+ExecStartPre=/usr/bin/sleep 5
+ExecStart=/usr/bin/rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/ucore-hci:stable-zfs
+ExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp
+ExecStartPost=/usr/bin/systemctl reboot
+
+[Install]
+WantedBy=multi-user.target

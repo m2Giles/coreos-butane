@@ -1,0 +1,13 @@
+[Unit]
+Description=Set correct file context for incus-agent
+ConditionPathExists=!/etc/ucore/%N.stamp
+ConditionFileIsExecutable=/usr/sbin/semanage
+Before=incus-agent.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/semanage fcontext -a -t bin_t /var/run/incus_agent/incus-agent
+ExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp
+
+[Install]
+WantedBy=multi-user.target

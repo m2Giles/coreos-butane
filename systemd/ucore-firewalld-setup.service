@@ -1,0 +1,21 @@
+[Unit]
+Description=Setup Firewalld Port Forwards
+ConditionFileIsExecutable=/usr/bin/firewall-cmd
+ConditionPathExists=!/etc/ucore/%N.stamp
+After=network-online.target firewalld.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/firewall-cmd --add-port=53/tcp --permanent
+ExecStart=/usr/bin/firewall-cmd --add-port=53/udp --permanent
+ExecStart=/usr/bin/firewall-cmd --add-port=80/tcp --permanent
+ExecStart=/usr/bin/firewall-cmd --add-port=81/tcp --permanent
+ExecStart=/usr/bin/firewall-cmd --add-port=443/tcp --permanent
+ExecStart=/usr/bin/firewall-cmd --add-port=5380/tcp --permanent
+ExecStart=/usr/bin/firewall-cmd --add-port=8080/tcp --permanent
+ExecStart=/usr/bin/firewall-cmd --add-port=8443/tcp --permanent
+ExecStart=/usr/bin/firewall-cmd --reload
+ExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp
+
+[Install]
+WantedBy=multi-user.target

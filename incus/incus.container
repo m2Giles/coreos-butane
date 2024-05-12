@@ -1,0 +1,56 @@
+[Unit]
+Description=Incus Container managed by quadlet
+Wants=network-online.target init-incus.service
+Before=init-incus.service
+After=network-online.target
+ConditionPathExists=/etc/ucore/build-incus-firstboot.stamp
+
+[Container]
+AutoUpdate=registry
+HostName=incus.%l
+ContainerName=incus
+PodmanArgs=--privileged
+SecurityLabelDisable=true
+PodmanArgs=--security-opt apparmor=unconfined
+PidsLimit=-1
+User=root:root
+PodmanArgs=--ipc host
+Network=host
+Label=manager=distrobox
+Label=distrobox.unshare_groups=1
+Environment="SHELL=bash"
+Environment="HOME=/var/home/core"
+Environment="USER=core"
+Environment="container=sudo podman"
+Environment="TERMINFO_DIRS=/usr/share/terminfo:/run/host/usr/share/terminfo"
+Volume=/:/run/host:rslave
+Volume=/tmp:/tmp:rslave
+Volume=/usr/bin/distrobox-init:/usr/bin/entrypoint:ro
+Volume=/usr/bin/distrobox-export:/usr/bin/distrobox-export:ro
+Volume=/usr/bin/distrobox-host-exec:/usr/bin/distrobox-host-exec:ro
+Volume=/var/home/core:/var/home/core:rslave
+Volume=/dev:/dev:rslave
+Volume=/sys:/sys:rslave
+Volume=/dev/pts
+Volume=/dev/null:/dev/ptmx
+Volume=/sys/fs/selinux
+Volume=/var/log/journal
+Volume=/etc/hosts:/etc/hosts:ro
+Volume=/etc/resolv.conf:/etc/resolv.conf:ro
+Annotation=run.oci.keep_original_groups=1
+Ulimit=host
+PodmanArgs=--systemd=always
+Volume=/var/lib/incus:/var/lib/incus
+Volume=/lib/modules:/lib/modules:ro
+Volume=/dev/null:/run/.nopasswd:ro
+Volume=/dev/null:/.containersetupdone:ro
+PodmanArgs=--entrypoint /usr/bin/entrypoint
+Exec=--verbose --name "core" --user "1000" --group "1000" --home "/var/home/core" --init "1" --nvidia "0" --pre-init-hooks " " --additional-packages " " -- ': ; usermod -aG incus-admin core'
+Image=localhost/incus:latest
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target

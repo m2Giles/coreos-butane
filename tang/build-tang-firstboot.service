@@ -1,0 +1,14 @@
+[Unit]
+Description=Build Tang Container following first Boot
+ConditionPathExists=!/etc/ucore/%N.stamp
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl start build-tang.service
+ExecStartPost=/usr/bin/touch /etc/ucore/%N.stamp
+ExecStartPost=/usr/bin/systemctl start tang.service
+
+[Install]
+WantedBy=multi-user.target

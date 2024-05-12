@@ -1,0 +1,10 @@
+[Unit]
+Description=Build Incus Container weekly
+
+[Timer]
+OnCalendar=weekly
+RandomizedDelaySec=900
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Build Tang Container
+
+[Timer]
+OnCalendar=weekly
+RandomizedDelaySec=900
+Persistent=true
+
+[Install]
+WantedBy=timers.target
